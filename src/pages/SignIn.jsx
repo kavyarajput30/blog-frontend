@@ -50,8 +50,11 @@ function SignIn() {
         navigate("/");
       }
     } catch (err) {
-      toast.error(err.response.data.message);
-      dispatch(signInFailure(err.response.data.message));
+      if(err.response){
+        toast.error(err.response.data.message);
+        dispatch(signInFailure(err.response.data.message));
+      }
+      
       console.log(err);
     }
   };
